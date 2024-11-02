@@ -9,21 +9,25 @@ import net.minecraft.world.phys.AABB;
 import org.confluence.mod.misc.ModConfigs;
 
 import java.util.Comparator;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.concurrent.atomic.AtomicReference;
 
 public interface IMetalDetector {
     static Component getInfo(Player localPlayer) {
         AtomicReference<Component> atomic = new AtomicReference<>(Component.translatable("info.confluence.metal_detector.none"));
-        Object2IntMap<BlockState> cached = new Object2IntOpenHashMap<>();
+        Object2IntMap<BlockState> indexed = new Object2IntOpenHashMap<>();
+        Set<BlockState> tested = new HashSet<>();
         localPlayer.level().getBlockStates(new AABB(localPlayer.getOnPos()).inflate(15.5)).forEach(blockState -> {
-            if (cached.containsKey(blockState)) return;
+            if (tested.contains(blockState)) return;
             for (int i = 0; i < ModConfigs.rareBlocks.size(); i++) {
                 if (ModConfigs.rareBlocks.get(i).test(blockState)) {
-                    cached.put(blockState, i);
+                    indexed.put(blockState, i);
                 }
             }
+            tested.add(blockState);
         });
-        cached.object2IntEntrySet().stream().min(Comparator.comparingInt(Object2IntMap.Entry::getIntValue))
+        indexed.object2IntEntrySet().stream().min(Comparator.comparingInt(Object2IntMap.Entry::getIntValue))
                 .ifPresent(entry -> atomic.set(Component.translatable("info.confluence.metal_detector", entry.getKey().getBlock().getName())));
         return atomic.get();
     }
