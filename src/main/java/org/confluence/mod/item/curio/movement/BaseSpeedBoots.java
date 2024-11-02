@@ -68,10 +68,12 @@ public class BaseSpeedBoots extends BaseCurioItem {
                 if (player.onGround()) {
                     if (ClientPacketHandler.isHasMagiluminescence()) addition *= 2;
                     int actually = Math.min(max - speed, addition);
+                    int value = speed + actually;
                     if (actually > 0) {
-                        NetworkHandler.CHANNEL.sendToServer(new SpeedBootsNBTPacketC2S(slotContext.index(), speed + actually));
+                        NetworkHandler.CHANNEL.sendToServer(new SpeedBootsNBTPacketC2S(slotContext.index(), value));
                     }
-                    if (ClientConfigs.playShoesSound && player.level().getGameTime() % 4 == 0) {
+                    float ratio = (float) value / max;
+                    if (ClientConfigs.playShoesSound && player.level().getGameTime() % (ratio < 0.5F ? 6L : 4L) == 0) {
                         player.playSound(ModSoundEvents.SHOES_WALK.get());
                     }
                 }

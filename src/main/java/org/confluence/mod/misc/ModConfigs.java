@@ -3,7 +3,10 @@ package org.confluence.mod.misc;
 import net.minecraft.commands.arguments.blocks.BlockStateParser;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.BlockTags;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.common.ForgeConfigSpec;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -11,6 +14,7 @@ import org.confluence.mod.Confluence;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Predicate;
 
 public final class ModConfigs {
     private static final ForgeConfigSpec.Builder BUILDER = new ForgeConfigSpec.Builder();
@@ -276,7 +280,7 @@ public final class ModConfigs {
 
     public static final ForgeConfigSpec SPEC = BUILDER.build();
 
-    public static final ArrayList<BlockState> rareBlocks = new ArrayList<>();
+    public static final ArrayList<Predicate<BlockState>> rareBlocks = new ArrayList<>();
     public static final ArrayList<EntityType<?>> rareCreatures = new ArrayList<>();
 
     @SuppressWarnings("deprecation")
@@ -285,7 +289,13 @@ public final class ModConfigs {
         rareCreatures.clear();
         RARE_BLOCKS.get().forEach(s -> {
             try {
-                rareBlocks.add(BlockStateParser.parseForBlock(BuiltInRegistries.BLOCK.asLookup(), s, false).blockState());
+                if (s.startsWith("#")) {
+                    TagKey<Block> tagKey = BlockTags.create(new ResourceLocation(s.substring(1)));
+                    rareBlocks.add(blockState -> blockState.is(tagKey));
+                } else {
+                    BlockState state = BlockStateParser.parseForBlock(BuiltInRegistries.BLOCK.asLookup(), s, false).blockState();
+                    rareBlocks.add(blockState -> blockState.equals(state));
+                }
             } catch (Exception e) {
                 Confluence.LOGGER.error(e.getMessage());
             }
