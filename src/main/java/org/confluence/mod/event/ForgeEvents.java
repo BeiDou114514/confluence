@@ -128,7 +128,7 @@ public final class ForgeEvents {
 
     @SubscribeEvent
     public static void entityJoinLevel(EntityJoinLevelEvent event) {
-        if (event.loadedFromDisk() || !event.getLevel().isClientSide) return;
+        if (event.loadedFromDisk() || event.getLevel().isClientSide) return;
         if (event.getEntity() instanceof AbstractArrow arrow && arrow.getOwner() instanceof LivingEntity living) {
             ModAttributes.applyToArrow(living, arrow);
             MoltenQuiver.applyToArrow(living, arrow);

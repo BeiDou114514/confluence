@@ -12,6 +12,8 @@
         "LivingEntityMixin",
         "SlimeBlockMixin",
         "TagLoaderMixin",
+        "spartanweaponry.HeavyCrossbowItemMixin",
+        "spartanweaponry.LongBowItemMixin",
         "tetra.ModularBowItemMixin"
     ],
     "minVersion": "0.8.5",
