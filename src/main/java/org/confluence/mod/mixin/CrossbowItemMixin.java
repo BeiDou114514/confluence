@@ -12,7 +12,7 @@ import org.spongepowered.asm.mixin.injection.At;
 @Mixin(CrossbowItem.class)
 public abstract class CrossbowItemMixin {
     @WrapWithCondition(method = "onCrossbowShot", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/item/CrossbowItem;clearChargedProjectiles(Lnet/minecraft/world/item/ItemStack;)V"))
-    private static boolean canClear(ItemStack pCrossbowStack, @Local LivingEntity pShooter) {
+    private static boolean canClear(ItemStack pCrossbowStack, @Local(argsOnly = true) LivingEntity pShooter) {
         if (pShooter.level().isClientSide) return true;
         boolean consume = MagicQuiver.shouldConsume(pShooter);
         pCrossbowStack.getOrCreateTag().putBoolean("canceled", !consume);
