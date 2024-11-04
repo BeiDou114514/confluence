@@ -129,6 +129,13 @@ public abstract class LivingEntityMixin {
         }
     }
 
+    @Inject(method = "canFreeze", at = @At(value = "RETURN", ordinal = 1), cancellable = true)
+    private void checkFreeze(CallbackInfoReturnable<Boolean> cir) {
+        if (cir.getReturnValue()) {
+            cir.setReturnValue(CuriosUtils.noSameCurio(c$getSelf(), CurioItems.HAND_WARMER.get()));
+        }
+    }
+
     @WrapOperation(method = "getDamageAfterArmorAbsorb", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/damagesource/CombatRules;getDamageAfterAbsorb(FFF)F"))
     private float passArmor(float pDamage, float pTotalArmor, float pToughnessAttribute, Operation<Float> original, @Local(argsOnly = true) DamageSource pDamageSource) {
         if (pDamageSource.getEntity() instanceof LivingEntity attacker) {
