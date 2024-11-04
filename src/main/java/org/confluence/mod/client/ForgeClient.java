@@ -25,9 +25,9 @@ import org.confluence.mod.mixin.client.MinecraftAccessor;
 public final class ForgeClient {
     @SubscribeEvent
     public static void clientTick(TickEvent.ClientTickEvent event) {
+        if (event.phase == TickEvent.Phase.START) return;
         Minecraft minecraft = Minecraft.getInstance();
         LocalPlayer localPlayer = minecraft.player;
-        if (event.phase == TickEvent.Phase.START) return;
         GravitationHandler.tick(localPlayer);
         StepStoolHandler.handle(localPlayer);
         if (localPlayer == null) return;
@@ -66,9 +66,7 @@ public final class ForgeClient {
         if (ClientPacketHandler.isHasScope() && player.isCrouching() &&
             Minecraft.getInstance().options.getCameraType().isFirstPerson() &&
             player.getItemInHand(InteractionHand.MAIN_HAND).is(ModTags.RANGED_WEAPON)
-        ) {
-            event.setNewFovModifier(0.1F);
-        }
+        ) event.setNewFovModifier(0.1F);
     }
 
     @SubscribeEvent

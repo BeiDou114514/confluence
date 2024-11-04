@@ -62,7 +62,7 @@ public abstract class EntityMixin implements IEntity {
         return c$isShouldRot;
     }
 
-    @ModifyExpressionValue(method = "baseTick", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/Entity;isInLava()Z"))
+    @ModifyExpressionValue(method = "baseTick", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/Entity;isInLava()Z", ordinal = 1))
     private boolean resetLavaImmune(boolean original) {
         AtomicBoolean inLava = new AtomicBoolean(original);
         if (c$getSelf() instanceof Player living) {
@@ -106,7 +106,7 @@ public abstract class EntityMixin implements IEntity {
         }
     }
 
-    @Inject(method = "baseTick", at = @At(value = "INVOKE", target = "Lnet/minecraft/util/profiling/ProfilerFiller;pop()V", shift = At.Shift.BEFORE))
+    @Inject(method = "baseTick", at = @At(value = "INVOKE", target = "Lnet/minecraft/util/profiling/ProfilerFiller;pop()V"))
     private void tickProfiler(CallbackInfo ci) {
         if (c$cthulhuSprintingTime > 0) this.c$cthulhuSprintingTime--;
     }

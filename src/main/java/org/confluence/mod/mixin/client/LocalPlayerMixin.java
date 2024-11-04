@@ -1,9 +1,8 @@
 package org.confluence.mod.mixin.client;
 
 import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
+import com.llamalad7.mixinextras.injector.v2.WrapWithCondition;
 import net.minecraft.client.player.LocalPlayer;
-import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.common.ForgeMod;
 import net.minecraftforge.common.extensions.IForgeLivingEntity;
 import net.minecraftforge.fluids.FluidType;
 import org.confluence.mod.client.handler.ClientPacketHandler;
@@ -18,10 +17,12 @@ public abstract class LocalPlayerMixin implements IForgeLivingEntity {
         return original || ClientPacketHandler.isHasCthulhu();
     }
 
-    @Override
-    public void sinkInFluid(FluidType type) {
-        Vec3 motion = self().getDeltaMovement();
-        double factor = GravitationHandler.isShouldRot() ? 0.04 : -0.04;
-        self().setDeltaMovement(motion.x, motion.y + factor * self().getAttributeValue(ForgeMod.SWIM_SPEED.get()), motion.z);
+    @WrapWithCondition(method = "aiStep", at= @At(value = "INVOKE", target = "Lnet/minecraft/client/player/LocalPlayer;sinkInFluid(Lnet/minecraftforge/fluids/FluidType;)V"), remap = false)
+    private boolean sinkUpFluid(LocalPlayer instance, FluidType fluidType) {
+        if (GravitationHandler.isShouldRot()) {
+            jumpInFluid(fluidType);
+            return false;
+        }
+        return true;
     }
 }

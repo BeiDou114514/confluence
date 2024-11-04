@@ -1,6 +1,9 @@
 package org.confluence.mod.event;
 
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraftforge.common.crafting.CraftingHelper;
 import net.minecraftforge.event.entity.EntityAttributeModificationEvent;
@@ -17,6 +20,8 @@ import org.confluence.mod.misc.ModAttributes;
 import org.confluence.mod.misc.ModConfigs;
 import org.confluence.mod.network.NetworkHandler;
 import org.confluence.mod.recipe.AmountIngredient;
+
+import java.util.function.BiConsumer;
 
 import static org.confluence.mod.Confluence.MODID;
 
@@ -47,14 +52,15 @@ public final class ModEvents {
     @SubscribeEvent
     public static void modify(EntityAttributeModificationEvent event) {
         ModAttributes.readJsonConfig();
-        ModAttributes.registerAttribute(ModAttributes.CRIT_CHANCE.get(), event::add);
-        ModAttributes.registerAttribute(ModAttributes.RANGED_VELOCITY.get(), event::add);
-        ModAttributes.registerAttribute(ModAttributes.RANGED_DAMAGE.get(), event::add);
-        ModAttributes.registerAttribute(ModAttributes.DODGE_CHANCE.get(), event::add);
-        ModAttributes.registerAttribute(ModAttributes.MINING_SPEED.get(), event::add);
-        ModAttributes.registerAttribute(ModAttributes.AGGRO.get(), event::add);
-        ModAttributes.registerAttribute(ModAttributes.MAGIC_DAMAGE.get(), event::add);
-        ModAttributes.registerAttribute(ModAttributes.ARMOR_PASS.get(), event::add);
-        ModAttributes.registerAttribute(ModAttributes.PICKUP_RANGE.get(), event::add);
+        BiConsumer<EntityType<? extends LivingEntity>, Attribute> add = event::add;
+        ModAttributes.registerAttribute(ModAttributes.CRIT_CHANCE.get(), add);
+        ModAttributes.registerAttribute(ModAttributes.RANGED_VELOCITY.get(), add);
+        ModAttributes.registerAttribute(ModAttributes.RANGED_DAMAGE.get(), add);
+        ModAttributes.registerAttribute(ModAttributes.DODGE_CHANCE.get(), add);
+        ModAttributes.registerAttribute(ModAttributes.MINING_SPEED.get(), add);
+        ModAttributes.registerAttribute(ModAttributes.AGGRO.get(), add);
+        ModAttributes.registerAttribute(ModAttributes.MAGIC_DAMAGE.get(), add);
+        ModAttributes.registerAttribute(ModAttributes.ARMOR_PASS.get(), add);
+        ModAttributes.registerAttribute(ModAttributes.PICKUP_RANGE.get(), add);
     }
 }
