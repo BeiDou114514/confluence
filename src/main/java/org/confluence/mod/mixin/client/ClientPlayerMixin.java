@@ -19,12 +19,12 @@ public abstract class ClientPlayerMixin {
 
     @ModifyVariable(method = "maybeBackOffFromEdge", at = @At("HEAD"), argsOnly = true)
     private Vec3 backOff(Vec3 pVec) {
-        return isLocalPlayer() && GravitationHandler.isShouldRot() ? new Vec3(pVec.x, -pVec.y, pVec.z) : pVec;
+        return GravitationHandler.isShouldRot() ? new Vec3(pVec.x, -pVec.y, pVec.z) : pVec;
     }
 
     @Inject(method = "maybeBackOffFromEdge", at = @At("RETURN"), cancellable = true)
     private void backOff2(Vec3 pVec, MoverType pMover, CallbackInfoReturnable<Vec3> cir) {
-        if (isLocalPlayer() && GravitationHandler.isShouldRot()) {
+        if (GravitationHandler.isShouldRot()) {
             Vec3 vec3 = cir.getReturnValue();
             cir.setReturnValue(new Vec3(vec3.x, -vec3.y, vec3.z));
         }
@@ -32,6 +32,6 @@ public abstract class ClientPlayerMixin {
 
     @ModifyArg(method = "maybeBackOffFromEdge", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/phys/AABB;move(DDD)Lnet/minecraft/world/phys/AABB;"), index = 1)
     private double backOff3(double pY) {
-        return isLocalPlayer() && GravitationHandler.isShouldRot() ? -pY : pY;
+        return GravitationHandler.isShouldRot() ? -pY : pY;
     }
 }
