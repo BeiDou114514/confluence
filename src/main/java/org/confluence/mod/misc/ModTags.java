@@ -16,5 +16,5 @@ public final class ModTags {
     public static final TagKey<Item> RANGED_WEAPON = ItemTags.create(new ResourceLocation(Confluence.MODID, "ranged_weapon"));
     public static final TagKey<Block> FLOWER_BOOTS_AVAILABLE = BlockTags.create(new ResourceLocation(Confluence.MODID, "flower_boots_available"));
     public static final TagKey<Fluid> WATER_LIKE_WALK = FluidTags.create(new ResourceLocation(Confluence.MODID, "water_like_walk"));
-    public static final TagKey<Fluid> ALL_FLUID_WALK = FluidTags.create(new ResourceLocation(Confluence.MODID, "all_fluid_walk"));
+    public static final TagKey<Fluid> LAVA_LIKE_WALK = FluidTags.create(new ResourceLocation(Confluence.MODID, "lava_like_walk"));
 }

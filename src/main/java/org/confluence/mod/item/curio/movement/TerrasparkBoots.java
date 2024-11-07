@@ -3,6 +3,7 @@ package org.confluence.mod.item.curio.movement;
 import com.google.common.collect.ImmutableMultimap;
 import com.google.common.collect.Multimap;
 import net.minecraft.network.chat.Component;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeInstance;
@@ -11,13 +12,12 @@ import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.material.FluidState;
+import net.minecraft.world.level.material.Fluid;
 import org.confluence.mod.client.color.FloatRGB;
 import org.confluence.mod.item.curio.ILavaImmune;
 import org.confluence.mod.item.curio.combat.IFireImmune;
 import org.confluence.mod.item.curio.combat.ILavaHurtReduce;
 import org.confluence.mod.misc.ModConfigs;
-import org.confluence.mod.misc.ModTags;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.joml.Vector3f;
@@ -80,8 +80,8 @@ public class TerrasparkBoots extends FrostsparkBoots implements IFireImmune, ILa
     }
 
     @Override
-    public boolean canStandOn(FluidState fluidState) {
-        return fluidState.is(ModTags.ALL_FLUID_WALK);
+    public List<TagKey<Fluid>> canStandOn() {
+        return ALL_FLUIDS;
     }
 
     @Override

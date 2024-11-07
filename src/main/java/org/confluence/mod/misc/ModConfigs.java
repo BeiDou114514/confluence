@@ -84,29 +84,29 @@ public final class ModConfigs {
 
     public static final ForgeConfigSpec.DoubleValue AMBER_HORSESHOE_BALLOON_JUMP_BOOST = BUILDER.pop().push("Jump Boost").defineInRange("AmberHorseshoeBalloon", 1.75, 0.0, Double.MAX_VALUE);
     public static final ForgeConfigSpec.DoubleValue AMBHIPIAN_BOOTS_JUMP_BOOST = BUILDER.defineInRange("AmbhipianBoots", 1.6, 0.0, Double.MAX_VALUE);
-    public static final ForgeConfigSpec.DoubleValue BALLOON_JUMP_BOOST = BUILDER.defineInRange("Balloon", 1.33, 0.0, Double.MAX_VALUE);
-    public static final ForgeConfigSpec.DoubleValue BLIZZARD_IN_A_BALLOON_JUMP_BOOST = BUILDER.defineInRange("BlizzardInABalloon", 1.33, 0.0, Double.MAX_VALUE);
+    public static final ForgeConfigSpec.DoubleValue BALLOON_JUMP_BOOST = BUILDER.defineInRange("Balloon", 1.43, 0.0, Double.MAX_VALUE);
+    public static final ForgeConfigSpec.DoubleValue BLIZZARD_IN_A_BALLOON_JUMP_BOOST = BUILDER.defineInRange("BlizzardInABalloon", 1.43, 0.0, Double.MAX_VALUE);
     public static final ForgeConfigSpec.DoubleValue BLUE_HORSESHOE_BALLOON_JUMP_BOOST = BUILDER.defineInRange("BlueHorseshoeBalloon", 1.75, 0.0, Double.MAX_VALUE);
-    public static final ForgeConfigSpec.DoubleValue BUNDLE_OF_BALLOONS_JUMP_BOOST = BUILDER.defineInRange("BundleOfBalloons", 1.33, 0.0, Double.MAX_VALUE);
+    public static final ForgeConfigSpec.DoubleValue BUNDLE_OF_BALLOONS_JUMP_BOOST = BUILDER.defineInRange("BundleOfBalloons", 1.43, 0.0, Double.MAX_VALUE);
     public static final ForgeConfigSpec.DoubleValue BUNDLE_OF_HORSESHOE_BALLOONS_JUMP_BOOST = BUILDER.defineInRange("BundleOfHorseshoeBalloons", 1.33, 0.0, Double.MAX_VALUE);
-    public static final ForgeConfigSpec.DoubleValue CLOUD_IN_A_BALLOON_JUMP_BOOST = BUILDER.defineInRange("CloudInABalloon", 1.33, 0.0, Double.MAX_VALUE);
-    public static final ForgeConfigSpec.DoubleValue FART_IN_A_BALLOON_JUMP_BOOST = BUILDER.defineInRange("FartInABalloon", 1.33, 0.0, Double.MAX_VALUE);
+    public static final ForgeConfigSpec.DoubleValue CLOUD_IN_A_BALLOON_JUMP_BOOST = BUILDER.defineInRange("CloudInABalloon", 1.43, 0.0, Double.MAX_VALUE);
+    public static final ForgeConfigSpec.DoubleValue FART_IN_A_BALLOON_JUMP_BOOST = BUILDER.defineInRange("FartInABalloon", 1.43, 0.0, Double.MAX_VALUE);
     public static final ForgeConfigSpec.DoubleValue FROG_FLIPPER_JUMP_BOOST = BUILDER.defineInRange("FrogFlipper", 1.6, 0.0, Double.MAX_VALUE);
     public static final ForgeConfigSpec.DoubleValue FROG_LEG_JUMP_BOOST = BUILDER.defineInRange("FrogLeg", 1.6, 0.0, Double.MAX_VALUE);
-    public static final ForgeConfigSpec.DoubleValue GREEN_HORSESHOE_BALLOON_JUMP_BOOST = BUILDER.defineInRange("GreenHorseshoeBalloon", 1.33, 0.0, Double.MAX_VALUE);
-    public static final ForgeConfigSpec.DoubleValue HONEY_BALLOON_JUMP_BOOST = BUILDER.defineInRange("HoneyBalloon", 1.33, 0.0, Double.MAX_VALUE);
-    public static final ForgeConfigSpec.DoubleValue PINK_HORSESHOE_BALLOON_JUMP_BOOST = BUILDER.defineInRange("PinkHorseshoeBalloon", 1.33, 0.0, Double.MAX_VALUE);
-    public static final ForgeConfigSpec.DoubleValue SANDSTORM_IN_A_BALLOON_JUMP_BOOST = BUILDER.defineInRange("SandstormInABalloon", 1.33, 0.0, Double.MAX_VALUE);
-    public static final ForgeConfigSpec.DoubleValue SHARKRON_BALLOON_JUMP_BOOST = BUILDER.defineInRange("SharkronBalloon", 1.33, 0.0, Double.MAX_VALUE);
-    public static final ForgeConfigSpec.DoubleValue WHITE_HORSESHOE_BALLOON_JUMP_BOOST = BUILDER.defineInRange("WhiteHorseshoeBalloon", 1.33, 0.0, Double.MAX_VALUE);
+    public static final ForgeConfigSpec.DoubleValue GREEN_HORSESHOE_BALLOON_JUMP_BOOST = BUILDER.defineInRange("GreenHorseshoeBalloon", 1.75, 0.0, Double.MAX_VALUE);
+    public static final ForgeConfigSpec.DoubleValue HONEY_BALLOON_JUMP_BOOST = BUILDER.defineInRange("HoneyBalloon", 1.43, 0.0, Double.MAX_VALUE);
+    public static final ForgeConfigSpec.DoubleValue PINK_HORSESHOE_BALLOON_JUMP_BOOST = BUILDER.defineInRange("PinkHorseshoeBalloon", 1.43, 0.0, Double.MAX_VALUE);
+    public static final ForgeConfigSpec.DoubleValue SANDSTORM_IN_A_BALLOON_JUMP_BOOST = BUILDER.defineInRange("SandstormInABalloon", 1.43, 0.0, Double.MAX_VALUE);
+    public static final ForgeConfigSpec.DoubleValue SHARKRON_BALLOON_JUMP_BOOST = BUILDER.defineInRange("SharkronBalloon", 1.43, 0.0, Double.MAX_VALUE);
+    public static final ForgeConfigSpec.DoubleValue WHITE_HORSESHOE_BALLOON_JUMP_BOOST = BUILDER.defineInRange("WhiteHorseshoeBalloon", 1.43, 0.0, Double.MAX_VALUE);
     public static final ForgeConfigSpec.DoubleValue YELLOW_HORSESHOE_BALLOON_JUMP_BOOST = BUILDER.defineInRange("YellowHorseshoeBalloon", 1.75, 0.0, Double.MAX_VALUE);
 
-    public static final ForgeConfigSpec.IntValue FAIRY_BOOTS_FLY_TICKS = BUILDER.pop().push("May Fly").push("Fly Ticks").defineInRange("FairyBoots", 32, 0, Integer.MAX_VALUE);
-    public static final ForgeConfigSpec.IntValue FROSTSPARK_BOOTS_FLY_TICKS = BUILDER.defineInRange("FrostsparkBoots", 32, 0, Integer.MAX_VALUE);
-    public static final ForgeConfigSpec.IntValue LIGHTNING_BOOTS_FLY_TICKS = BUILDER.defineInRange("LightningBoots", 32, 0, Integer.MAX_VALUE);
-    public static final ForgeConfigSpec.IntValue ROCKET_BOOTS_FLY_TICKS = BUILDER.defineInRange("RocketBoots", 32, 0, Integer.MAX_VALUE);
-    public static final ForgeConfigSpec.IntValue SPECTRE_BOOTS_FLY_TICKS = BUILDER.defineInRange("SpectreBoots", 32, 0, Integer.MAX_VALUE);
-    public static final ForgeConfigSpec.IntValue TERRASPARK_BOOTS_FLY_TICKS = BUILDER.defineInRange("TerrasparkBoots", 32, 0, Integer.MAX_VALUE);
+    public static final ForgeConfigSpec.IntValue FAIRY_BOOTS_FLY_TICKS = BUILDER.pop().push("May Fly").push("Fly Ticks").defineInRange("FairyBoots", 36, 0, Integer.MAX_VALUE);
+    public static final ForgeConfigSpec.IntValue FROSTSPARK_BOOTS_FLY_TICKS = BUILDER.defineInRange("FrostsparkBoots", 40, 0, Integer.MAX_VALUE);
+    public static final ForgeConfigSpec.IntValue LIGHTNING_BOOTS_FLY_TICKS = BUILDER.defineInRange("LightningBoots", 36, 0, Integer.MAX_VALUE);
+    public static final ForgeConfigSpec.IntValue ROCKET_BOOTS_FLY_TICKS = BUILDER.defineInRange("RocketBoots", 36, 0, Integer.MAX_VALUE);
+    public static final ForgeConfigSpec.IntValue SPECTRE_BOOTS_FLY_TICKS = BUILDER.defineInRange("SpectreBoots", 36, 0, Integer.MAX_VALUE);
+    public static final ForgeConfigSpec.IntValue TERRASPARK_BOOTS_FLY_TICKS = BUILDER.defineInRange("TerrasparkBoots", 40, 0, Integer.MAX_VALUE);
     public static final ForgeConfigSpec.DoubleValue FAIRY_BOOTS_FLY_SPEED = BUILDER.pop().push("Fly Speed").defineInRange("FairyBoots", 0.3, 0.0, Double.MAX_VALUE);
     public static final ForgeConfigSpec.DoubleValue FROSTSPARK_BOOTS_FLY_SPEED = BUILDER.defineInRange("FrostsparkBoots", 0.3, 0.0, Double.MAX_VALUE);
     public static final ForgeConfigSpec.DoubleValue LIGHTNING_BOOTS_FLY_SPEED = BUILDER.defineInRange("LightningBoots", 0.3, 0.0, Double.MAX_VALUE);
@@ -114,20 +114,20 @@ public final class ModConfigs {
     public static final ForgeConfigSpec.DoubleValue SPECTRE_BOOTS_FLY_SPEED = BUILDER.defineInRange("SpectreBoots", 0.3, 0.0, Double.MAX_VALUE);
     public static final ForgeConfigSpec.DoubleValue TERRASPARK_BOOTS_FLY_SPEED = BUILDER.defineInRange("TerrasparkBoots", 0.3, 0.0, Double.MAX_VALUE);
 
-    public static final ForgeConfigSpec.IntValue BLIZZARD_IN_A_BALLOON_JUMP_TICKS = BUILDER.pop().pop().push("Multi Jump").push("Jump Ticks").defineInRange("BlizzardInABalloon", 16, 0, Integer.MAX_VALUE);
-    public static final ForgeConfigSpec.IntValue BLIZZARD_IN_A_BOTTLE_JUMP_TICKS = BUILDER.defineInRange("BlizzardInABottle", 16, 0, Integer.MAX_VALUE);
-    public static final ForgeConfigSpec.IntValue SANDSTORM_IN_A_BALLOON_JUMP_TICKS = BUILDER.defineInRange("SandstormInABalloon", 20, 0, Integer.MAX_VALUE);
-    public static final ForgeConfigSpec.IntValue SANDSTORM_IN_A_BOTTLE_JUMP_TICKS = BUILDER.defineInRange("SandstormInABottle", 20, 0, Integer.MAX_VALUE);
+    public static final ForgeConfigSpec.IntValue BLIZZARD_IN_A_BALLOON_JUMP_TICKS = BUILDER.pop().pop().push("Multi Jump").push("Jump Ticks").defineInRange("BlizzardInABalloon", 14, 0, Integer.MAX_VALUE);
+    public static final ForgeConfigSpec.IntValue BLIZZARD_IN_A_BOTTLE_JUMP_TICKS = BUILDER.defineInRange("BlizzardInABottle", 14, 0, Integer.MAX_VALUE);
+    public static final ForgeConfigSpec.IntValue SANDSTORM_IN_A_BALLOON_JUMP_TICKS = BUILDER.defineInRange("SandstormInABalloon", 17, 0, Integer.MAX_VALUE);
+    public static final ForgeConfigSpec.IntValue SANDSTORM_IN_A_BOTTLE_JUMP_TICKS = BUILDER.defineInRange("SandstormInABottle", 17, 0, Integer.MAX_VALUE);
     public static final ForgeConfigSpec.DoubleValue BLIZZARD_IN_A_BALLOON_JUMP_SPEED = BUILDER.pop().push("Jump Speed").defineInRange("BlizzardInABalloon", 0.4, 0.0, Double.MAX_VALUE);
     public static final ForgeConfigSpec.DoubleValue BLIZZARD_IN_A_BOTTLE_JUMP_SPEED = BUILDER.defineInRange("BlizzardInABottle", 0.4, 0.0, Double.MAX_VALUE);
-    public static final ForgeConfigSpec.DoubleValue CLOUD_IN_A_BALLOON_JUMP_SPEED = BUILDER.defineInRange("CloudInABalloon", 1.1, 0.0, Double.MAX_VALUE);
-    public static final ForgeConfigSpec.DoubleValue CLOUD_IN_A_BOTTLE_JUMP_SPEED = BUILDER.defineInRange("CloudInABottle", 1.1, 0.0, Double.MAX_VALUE);
-    public static final ForgeConfigSpec.DoubleValue FART_IN_A_BALLOON_JUMP_SPEED = BUILDER.defineInRange("FartInABalloon", 2.1, 0.0, Double.MAX_VALUE);
-    public static final ForgeConfigSpec.DoubleValue FART_IN_A_JAR_JUMP_SPEED = BUILDER.defineInRange("FartInAJar", 2.8, 0.0, Double.MAX_VALUE);
+    public static final ForgeConfigSpec.DoubleValue CLOUD_IN_A_BALLOON_JUMP_SPEED = BUILDER.defineInRange("CloudInABalloon", 1.3, 0.0, Double.MAX_VALUE);
+    public static final ForgeConfigSpec.DoubleValue CLOUD_IN_A_BOTTLE_JUMP_SPEED = BUILDER.defineInRange("CloudInABottle", 1.3, 0.0, Double.MAX_VALUE);
+    public static final ForgeConfigSpec.DoubleValue FART_IN_A_BALLOON_JUMP_SPEED = BUILDER.defineInRange("FartInABalloon", 1.1, 0.0, Double.MAX_VALUE);
+    public static final ForgeConfigSpec.DoubleValue FART_IN_A_JAR_JUMP_SPEED = BUILDER.defineInRange("FartInAJar", 1.7, 0.0, Double.MAX_VALUE);
     public static final ForgeConfigSpec.DoubleValue SANDSTORM_IN_A_BALLOON_JUMP_SPEED = BUILDER.defineInRange("SandstormInABalloon", 0.45, 0.0, Double.MAX_VALUE);
     public static final ForgeConfigSpec.DoubleValue SANDSTORM_IN_A_BOTTLE_JUMP_SPEED = BUILDER.defineInRange("SandstormInABottle", 0.45, 0.0, Double.MAX_VALUE);
-    public static final ForgeConfigSpec.DoubleValue SHARKRON_BALLOON_JUMP_SPEED = BUILDER.defineInRange("SharkronBalloon", 1.1, 0.0, Double.MAX_VALUE);
-    public static final ForgeConfigSpec.DoubleValue TSUNAMI_IN_A_BOTTLE_JUMP_SPEED = BUILDER.defineInRange("TsunamiInABottle", 1.0, 0.0, Double.MAX_VALUE);
+    public static final ForgeConfigSpec.DoubleValue SHARKRON_BALLOON_JUMP_SPEED = BUILDER.defineInRange("SharkronBalloon", 1.3, 0.0, Double.MAX_VALUE);
+    public static final ForgeConfigSpec.DoubleValue TSUNAMI_IN_A_BOTTLE_JUMP_SPEED = BUILDER.defineInRange("TsunamiInABottle", 1.5, 0.0, Double.MAX_VALUE);
 
     public static final ForgeConfigSpec.DoubleValue MAGIC_QUIVER_NO_CONSUME_CHANCE = BUILDER.pop().pop().push("Magic Quiver").defineInRange("arrowNoConsumeChance", 0.2, 0.0, 1.0);
 

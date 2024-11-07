@@ -1,19 +1,32 @@
 package org.confluence.mod.capability.ability;
 
 import com.google.common.util.concurrent.AtomicDouble;
+import com.mojang.serialization.Codec;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.nbt.ListTag;
+import net.minecraft.nbt.NbtOps;
+import net.minecraft.nbt.Tag;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.material.Fluid;
+import net.minecraft.world.level.material.FluidState;
 import net.minecraftforge.common.util.INBTSerializable;
 import net.minecraftforge.items.IItemHandlerModifiable;
 import org.confluence.mod.item.curio.ILavaImmune;
 import org.confluence.mod.item.curio.combat.IFireImmune;
 import org.confluence.mod.item.curio.combat.IInvulnerableTime;
 import org.confluence.mod.item.curio.movement.IFallResistance;
+import org.confluence.mod.item.curio.movement.IFluidWalk;
 import org.confluence.mod.item.curio.movement.IJumpBoost;
 import top.theillusivec4.curios.api.CuriosApi;
 
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -24,6 +37,7 @@ public final class PlayerAbility implements INBTSerializable<CompoundTag> {
     private boolean fireImmune;
     private int maxLavaImmuneTicks;
     private transient int remainLavaImmuneTicks;
+    private final List<TagKey<Fluid>> fluidWalk = new ArrayList<>();
 
     public PlayerAbility() {
         this.jumpBoost = 1.0;
@@ -40,6 +54,7 @@ public final class PlayerAbility implements INBTSerializable<CompoundTag> {
         AtomicInteger invul = new AtomicInteger(20);
         AtomicBoolean fire = new AtomicBoolean();
         AtomicInteger lava = new AtomicInteger();
+        Set<TagKey<Fluid>> fluids = new HashSet<>();
         CuriosApi.getCuriosInventory(living).ifPresent(handler -> {
             IItemHandlerModifiable itemHandlerModifiable = handler.getEquippedCurios();
             for (int i = 0; i < itemHandlerModifiable.getSlots(); i++) {
@@ -57,6 +72,9 @@ public final class PlayerAbility implements INBTSerializable<CompoundTag> {
                 if (item instanceof ILavaImmune iLavaImmune) {
                     lava.set(Math.max(iLavaImmune.getLavaImmuneTicks(), lava.get()));
                 }
+                if (item instanceof IFluidWalk iFluidWalk) {
+                    fluids.addAll(iFluidWalk.canStandOn());
+                }
             }
         });
         this.jumpBoost = jump.get();
@@ -64,6 +82,8 @@ public final class PlayerAbility implements INBTSerializable<CompoundTag> {
         this.invulnerableTime = invul.get();
         this.fireImmune = fire.get();
         this.maxLavaImmuneTicks = lava.get();
+        this.fluidWalk.clear();
+        this.fluidWalk.addAll(fluids);
     }
 
     public double getJumpBoost() {
@@ -96,6 +116,10 @@ public final class PlayerAbility implements INBTSerializable<CompoundTag> {
         return false;
     }
 
+    public boolean canWalkOnFluid(FluidState state) {
+        return fluidWalk.stream().anyMatch(state::is);
+    }
+
     @Override
     public CompoundTag serializeNBT() {
         CompoundTag nbt = new CompoundTag();
@@ -104,6 +128,12 @@ public final class PlayerAbility implements INBTSerializable<CompoundTag> {
         nbt.putInt("invulnerableTime", invulnerableTime);
         nbt.putBoolean("fireImmune", fireImmune);
         nbt.putInt("maxLavaImmuneTicks", maxLavaImmuneTicks);
+        ListTag listTag = new ListTag();
+        Codec<TagKey<Fluid>> codec = TagKey.codec(Registries.FLUID);
+        for (TagKey<Fluid> tag : fluidWalk) {
+            codec.encodeStart(NbtOps.INSTANCE, tag).result().ifPresent(listTag::add);
+        }
+        nbt.put("fluidWalk", listTag);
         return nbt;
     }
 
@@ -114,6 +144,12 @@ public final class PlayerAbility implements INBTSerializable<CompoundTag> {
         this.invulnerableTime = nbt.getInt("invulnerableTime");
         this.fireImmune = nbt.getBoolean("fireImmune");
         this.maxLavaImmuneTicks = nbt.getInt("maxLavaImmuneTicks");
+        this.fluidWalk.clear();
+        ListTag listTag = nbt.getList("fluidWalk", Tag.TAG_COMPOUND);
+        Codec<TagKey<Fluid>> codec = TagKey.codec(Registries.FLUID);
+        for (Tag tag : listTag) {
+            codec.decode(NbtOps.INSTANCE, tag).result().ifPresent(pair -> fluidWalk.add(pair.getFirst()));
+        }
     }
 
     public void copyFrom(PlayerAbility playerAbility) {
@@ -122,5 +158,7 @@ public final class PlayerAbility implements INBTSerializable<CompoundTag> {
         this.invulnerableTime = playerAbility.invulnerableTime;
         this.fireImmune = playerAbility.fireImmune;
         this.maxLavaImmuneTicks = playerAbility.maxLavaImmuneTicks;
+        this.fluidWalk.clear();
+        this.fluidWalk.addAll(playerAbility.fluidWalk);
     }
 }

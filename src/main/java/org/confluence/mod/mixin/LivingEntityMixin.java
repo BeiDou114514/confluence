@@ -20,7 +20,6 @@ import org.confluence.mod.effect.ModEffects;
 import org.confluence.mod.item.curio.CurioItems;
 import org.confluence.mod.item.curio.expert.RoyalGel;
 import org.confluence.mod.item.curio.miscellaneous.IFlowerBoots;
-import org.confluence.mod.item.curio.movement.IFluidWalk;
 import org.confluence.mod.misc.ModAttributes;
 import org.confluence.mod.misc.ModDamageTypes;
 import org.confluence.mod.util.CuriosUtils;
@@ -84,7 +83,11 @@ public abstract class LivingEntityMixin {
         if (self.isCrouching()) {
             cir.setReturnValue(false);
         } else {
-            CuriosUtils.findCurio(self, IFluidWalk.class).ifPresent(iFluidWalk -> cir.setReturnValue(iFluidWalk.canStandOn(fluidState)));
+            self.getCapability(AbilityProvider.CAPABILITY).ifPresent(playerAbility -> {
+                if (playerAbility.canWalkOnFluid(fluidState)) {
+                    cir.setReturnValue(true);
+                }
+            });
         }
     }
 
