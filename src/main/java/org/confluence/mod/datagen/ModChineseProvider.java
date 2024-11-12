@@ -200,7 +200,7 @@ public class ModChineseProvider extends LanguageProvider {
         add("item.confluence.dps_meter.info", "它有几率从爬行者（苦力怕）身上掉落。");
         add("item.confluence.fishermans_pocket_guide.info", "它可以在渔夫村民家中的箱子中找到。");
         add("item.confluence.life_form_analyzer.info", "它有几率从发光鱿鱼身上掉落。");
-        add("item.confluence.metal_detector.info", "它有几率从坚守者身上掉落。");
+        add("item.confluence.metal_detector.info", "它有几率从监守者身上掉落。");
         add("item.confluence.radar.info", "它有几率从蝙蝠身上掉落。");
         add("item.confluence.sextant.info", "这件物品可以在渔夫村民家中的箱子中找到。");
         add("item.confluence.tally_counter.info", "它有几率从爬行者（苦力怕）身上掉落。");
