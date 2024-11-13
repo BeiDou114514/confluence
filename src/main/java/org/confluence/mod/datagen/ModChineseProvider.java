@@ -236,7 +236,7 @@ public class ModChineseProvider extends LanguageProvider {
         add("item.confluence.hand_drill.info", "它有几率从远古守卫者身上掉落。");
         add("item.confluence.holy_water.info", "它有几率从凋零骷髅身上掉落。");
         add("item.confluence.honey_comb.info", "它有几率从蜜蜂身上掉落。");
-        add("item.confluence.magic_quiver.info7", "这件物品有几率从凋零骷髅身上掉落。");
+        add("item.confluence.magic_quiver.info7", "这件物品有几率从骷髅身上掉落。");
         add("item.confluence.magma_stone.info", "它有几率从从烈焰人身上掉落  。");
         add("item.confluence.moon_stone.info", "它有几率从幻翼身上掉落");
         add("item.confluence.obsidian_rose.info", "它可以在堡垒遗迹中发现的箱子中找到。");

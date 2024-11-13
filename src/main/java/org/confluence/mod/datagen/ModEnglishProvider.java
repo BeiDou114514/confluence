@@ -240,7 +240,7 @@ public class ModEnglishProvider extends LanguageProvider {
         add("item.confluence.hand_drill.info", "It have a Chance to be dropped from Elder Guardian.");
         add("item.confluence.holy_water.info", "It have a Chance to be dropped from Wither Skeleton.");
         add("item.confluence.honey_comb.info", "It have a Chance to be dropped from Bee.");
-        add("item.confluence.magic_quiver.info", "This item have a Chance to be dropped from Wither Skeleton.");
+        add("item.confluence.magic_quiver.info", "This item have a Chance to be dropped from Skeleton.");
         add("item.confluence.magma_stone.info", "It have a Chance to be dropped from Blaze.");
         add("item.confluence.moon_stone.info", "It have a Chance to be dropped from Phantom.");
         add("item.confluence.obsidian_rose.info", "It can be discovered in chests found within Bastion Remnant.");
