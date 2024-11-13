@@ -189,7 +189,7 @@ public class ModChineseProvider extends LanguageProvider {
         add("item.confluence.magiluminescence.info", "它可以在末地城的宝箱中找到。");
         add("item.confluence.sailfish_boots.info", "它可以在沉船宝箱中找到.");
         add("item.confluence.sandstorm_in_a_bottle.info", "它可以在沙漠神殿的宝箱中找到。");
-        add("item.confluence.shiny_red_balloon.info", "当玩家拥有村庄英雄效果时，图书管理员有几率将此物品交给玩家。");
+        add("item.confluence.shiny_red_balloon.info", "它可以在平原村庄中的宝箱中找到。当玩家拥有村庄英雄效果时，图书管理员有几率将此物品交给玩家。");
         add("item.confluence.shoe_spikes.info","它有几率从蜘蛛身上掉落。");
         add("item.confluence.step_stool.info", "你可以在锻造台使用梯凳升级它的额外高度");
         add("item.confluence.tabi.info", "它可以在要塞的宝箱中找到。");
@@ -200,7 +200,7 @@ public class ModChineseProvider extends LanguageProvider {
         add("item.confluence.dps_meter.info", "它有几率从爬行者（苦力怕）身上掉落。");
         add("item.confluence.fishermans_pocket_guide.info", "它可以在渔夫村民家中的箱子中找到。");
         add("item.confluence.life_form_analyzer.info", "它有几率从发光鱿鱼身上掉落。");
-        add("item.confluence.metal_detector.info", "它有几率从监守者身上掉落。");
+        add("item.confluence.metal_detector.info", "它必定从监守者身上掉落。");
         add("item.confluence.radar.info", "它有几率从蝙蝠身上掉落。");
         add("item.confluence.sextant.info", "这件物品可以在渔夫村民家中的箱子中找到。");
         add("item.confluence.tally_counter.info", "它有几率从爬行者（苦力怕）身上掉落。");
@@ -237,7 +237,7 @@ public class ModChineseProvider extends LanguageProvider {
         add("item.confluence.holy_water.info", "它有几率从凋零骷髅身上掉落。");
         add("item.confluence.honey_comb.info", "它有几率从蜜蜂身上掉落。");
         add("item.confluence.magic_quiver.info7", "这件物品有几率从骷髅身上掉落。");
-        add("item.confluence.magma_stone.info", "它有几率从从烈焰人身上掉落  。");
+        add("item.confluence.magma_stone.info", "它有几率从从烈焰人身上掉落 。");
         add("item.confluence.moon_stone.info", "它有几率从幻翼身上掉落");
         add("item.confluence.obsidian_rose.info", "它可以在堡垒遗迹中发现的箱子中找到。");
         add("item.confluence.paladins_shield.info", "它必定从末影龙身上掉落。");

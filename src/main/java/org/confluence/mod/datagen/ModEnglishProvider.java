@@ -193,7 +193,7 @@ public class ModEnglishProvider extends LanguageProvider {
         add("item.confluence.magiluminescence.info", "It can be found in End City Chests.");
         add("item.confluence.sailfish_boots.info", "It can be found in Shipwreck Chests.");
         add("item.confluence.sandstorm_in_a_bottle.info", "It can be found in Chests in the Desert Pyramid.");
-        add("item.confluence.shiny_red_balloon.info", "When the player has the Hero of the Village effect, the librarian has a chance to give the player this item.");
+        add("item.confluence.shiny_red_balloon.info", "When the player has the Hero of the Village effect, the librarian has a chance to give the player this item.It can be found in chests in plains villages.");
         add("item.confluence.shoe_spikes.info", "It have a Chance to be dropped from Cave Spider.");
         add("item.confluence.step_stool.info", "You can use Step Stool to upgrade its Extra Step from Smithing Table");
         add("item.confluence.tabi.info", "It can be found in Chests in the Fortress.");
