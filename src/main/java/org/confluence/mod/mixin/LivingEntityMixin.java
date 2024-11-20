@@ -35,6 +35,9 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 @Mixin(LivingEntity.class)
 public abstract class LivingEntityMixin {
+    @Unique
+    private FluidState confluence$lastWalkableFluidState;
+
     @Shadow
     public abstract EntityDimensions getDimensions(Pose pPose);
 
@@ -83,11 +86,16 @@ public abstract class LivingEntityMixin {
         if (self.isCrouching()) {
             cir.setReturnValue(false);
         } else {
-            self.getCapability(AbilityProvider.CAPABILITY).ifPresent(playerAbility -> {
-                if (playerAbility.canWalkOnFluid(fluidState)) {
-                    cir.setReturnValue(true);
-                }
-            });
+            if (confluence$lastWalkableFluidState == fluidState) {
+                cir.setReturnValue(true);
+            } else {
+                self.getCapability(AbilityProvider.CAPABILITY).ifPresent(playerAbility -> {
+                    if (playerAbility.canWalkOnFluid(fluidState)) {
+                        this.confluence$lastWalkableFluidState = fluidState;
+                        cir.setReturnValue(true);
+                    }
+                });
+            }
         }
     }
 
