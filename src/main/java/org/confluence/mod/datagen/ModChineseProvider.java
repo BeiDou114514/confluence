@@ -190,7 +190,7 @@ public class ModChineseProvider extends LanguageProvider {
         add("item.confluence.sailfish_boots.info", "它可以在沉船宝箱中找到.");
         add("item.confluence.sandstorm_in_a_bottle.info", "它可以在沙漠神殿的宝箱中找到。");
         add("item.confluence.shiny_red_balloon.info", "它可以在平原村庄中的宝箱中找到。当玩家拥有村庄英雄效果时，图书管理员有几率将此物品交给玩家。");
-        add("item.confluence.shoe_spikes.info","它有几率从蜘蛛身上掉落。");
+        add("item.confluence.shoe_spikes.info","它有几率从洞穴蜘蛛身上掉落。");
         add("item.confluence.step_stool.info", "你可以在锻造台使用梯凳升级它的额外高度");
         add("item.confluence.tabi.info", "它可以在要塞的宝箱中找到。");
         add("item.confluence.tsunami_in_a_bottle.info", "它可以在沉船宝箱中找到");
