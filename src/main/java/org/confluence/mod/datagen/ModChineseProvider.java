@@ -243,7 +243,7 @@ public class ModChineseProvider extends LanguageProvider {
         add("item.confluence.paladins_shield.info", "它必定从末影龙身上掉落。");
         add("item.confluence.panic_necklace.info", "它可以在地牢中的宝箱中找到。");
         add("item.confluence.putrid_scent.info", "它可以在地牢中的宝箱中找到。");
-        add("item.confluence.ranger_emblem.info", "它有几率从凋零骷髅身上掉落。");
+        add("item.confluence.ranger_emblem.info", "它有几率从骷髅身上掉落。");
         add("item.confluence.rifle_scope.info", "它有几率从末影人身上掉落。");
         add("item.confluence.shackle.info", "它可以在地牢中的宝箱中找到。");
         add("item.confluence.shark_tooth_necklace.info", "它有几率从溺尸身上掉落。");
