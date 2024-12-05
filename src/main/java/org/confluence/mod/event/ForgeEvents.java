@@ -55,6 +55,7 @@ public final class ForgeEvents {
         if (damageSource.is(DamageTypes.FELL_OUT_OF_WORLD) || damageSource.is(DamageTypes.GENERIC_KILL)) return;
         RandomSource random = living.level().random;
         float amount = event.getAmount();
+        if (amount < 0) return; // 防止莫名的负数伤害
 
         IHoneycomb.apply(living, random);
         IStarCloak.apply(living, random);
