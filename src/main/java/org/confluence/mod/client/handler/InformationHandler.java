@@ -2,6 +2,7 @@ package org.confluence.mod.client.handler;
 
 import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.EntityType;
@@ -17,7 +18,6 @@ import org.confluence.mod.network.s2c.EntityKilledPacketS2C;
 import org.confluence.mod.network.s2c.InfoCurioCheckPacketS2C;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.function.Function;
 import java.util.function.Supplier;
@@ -37,7 +37,7 @@ public final class InformationHandler {
     private static Component radarInfo = Component.translatable("info.confluence.radar", 0);
     private static Component tallyCounterInfo = Component.translatable("info.confluence.tally_counter.unknown");
     private static long lastAttackTime = 0;
-    private static final ArrayDeque<Float> attackDamage = new ArrayDeque<>(5);
+    private static float cachedDamage = 0.0F;
     private static Component dpsMeterInfo = Component.translatable("info.confluence.dps_meter", 0.00F);
 
     public static void handle(LocalPlayer localPlayer) {
@@ -88,12 +88,6 @@ public final class InformationHandler {
         }
 
         if (infoData[IDPSMeter.INDEX] != 0) {
-            long delta = gameTime - lastAttackTime;
-            if (delta % 20 == 0) {
-                float sum = 0.0F;
-                for (float value : attackDamage) sum += value;
-                dpsMeterInfo = IDPSMeter.getInfo(sum / (attackDamage.size() + 1));
-            }
             information.add(dpsMeterInfo);
         }
 
@@ -187,9 +181,20 @@ public final class InformationHandler {
     public static void handleAttackDamage(AttackDamagePacketS2C packet, Supplier<NetworkEvent.Context> ctx) {
         NetworkEvent.Context context = ctx.get();
         context.enqueueWork(() -> {
-            if (attackDamage.size() == 5) attackDamage.removeLast();
-            attackDamage.addFirst(packet.amount());
-            lastAttackTime = packet.gameTime();
+            ClientLevel level = Minecraft.getInstance().level;
+            if (level == null) return;
+            long gameTime = level.getGameTime();
+            long delta = gameTime - lastAttackTime;
+            if (delta == gameTime) { // 防止第一次攻击
+                delta = 20L;
+            }
+            if (delta > 100) { // 大于五秒重置
+                cachedDamage = 0.0F;
+                delta = 20L;
+            }
+            lastAttackTime = gameTime;
+            cachedDamage += packet.amount();
+            dpsMeterInfo = Component.translatable("info.confluence.dps_meter", "%.2f".formatted(cachedDamage / delta));
         });
         context.setPacketHandled(true);
     }

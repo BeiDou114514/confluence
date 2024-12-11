@@ -62,7 +62,7 @@ public final class ForgeEvents {
         PanicNecklace.apply(living);
 
         amount = ModAttributes.applyMagicDamage(damageSource, amount);
-        amount = ModAttributes.applyRangedDamage(living, damageSource, amount);
+        amount = ModAttributes.applyRangedDamage(damageSource, amount);
         amount = PaladinsShield.apply(living, damageSource, amount);
         amount = FrozenTurtleShell.apply(living, amount);
         amount = ILavaHurtReduce.apply(living, damageSource, amount);
