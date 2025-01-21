@@ -10,6 +10,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.network.PacketDistributor;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -49,8 +50,8 @@ public class BaseCurioItem extends Item implements ICurioItem {
         living.getCapability(AbilityProvider.CAPABILITY).ifPresent(playerAbility -> playerAbility.flushAbility(living));
         if (living instanceof ServerPlayer serverPlayer) {
             NetworkHandler.CHANNEL.send(
-                PacketDistributor.PLAYER.with(() -> serverPlayer),
-                new FlushPlayerAbilityPacketS2C(true)
+                    PacketDistributor.PLAYER.with(() -> serverPlayer),
+                    new FlushPlayerAbilityPacketS2C(true)
             );
             if (item instanceof IMayFly) IMayFly.sendMsg(serverPlayer);
             if (item instanceof IMultiJump) IMultiJump.sendMsg(serverPlayer);
@@ -99,5 +100,10 @@ public class BaseCurioItem extends Item implements ICurioItem {
 
     public Component[] getInformation() {
         return new Component[]{};
+    }
+
+    @Override
+    public boolean canApplyAtEnchantingTable(ItemStack stack, Enchantment enchantment) {
+        return enchantment.isCurse();
     }
 }
