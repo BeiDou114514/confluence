@@ -65,9 +65,13 @@ repositories {
             includeGroup("maven.modrinth")
         }
     }
-    maven {
-        url "https://cursemaven.com"
-        content {
+    exclusiveContent {
+        forRepository {
+            maven {
+                url "https://cursemaven.com"
+            }
+        }
+        filter {
             includeGroup "curse.maven"
         }
     }
@@ -86,15 +90,15 @@ dependencies {
     //runtimeOnly fg.deobf('maven.modrinth:playeranimator:1.0.2-rc1+1.20-forge')
     //runtimeOnly fg.deobf('maven.modrinth:cloth-config:11.1.118+forge')
 
-    compileOnly fg.deobf("curse.maven:tetra-289712:5544287")
-    //runtimeOnly fg.deobf("curse.maven:tetra-289712:5544287")
-    //runtimeOnly fg.deobf("curse.maven:mutil-351914:4824501") // Tetra的前置
+    compileOnly fg.deobf("maven.modrinth:tetra:v6cyAXIJ")
+    //runtimeOnly fg.deobf("maven.modrinth:tetra:v6cyAXIJ")
+    //runtimeOnly fg.deobf("maven.modrinth:mutil:8CZJ2gLR") // Tetra的前置
 
-    runtimeOnly fg.deobf("curse.maven:apothic-attributes-898963:5634071") // 神化属性
-    runtimeOnly fg.deobf("curse.maven:placebo-283644:5414631")
+//    runtimeOnly fg.deobf("curse.maven:apothic-attributes-898963:5634071") // 神化属性
+//    runtimeOnly fg.deobf("curse.maven:placebo-283644:5414631")
 
-    compileOnly fg.deobf("curse.maven:spartan-weaponry-278141:5597663")
-    //runtimeOnly fg.deobf("curse.maven:spartan-weaponry-278141:5597663")
+    compileOnly fg.deobf("maven.modrinth:spartan-weaponry:h2sutQWT")
+    //runtimeOnly fg.deobf("maven.modrinth:spartan-weaponry:h2sutQWT")
 
     annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
     compileOnly(annotationProcessor("io.github.llamalad7:mixinextras-common:0.3.6"))

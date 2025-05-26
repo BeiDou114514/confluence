@@ -3,6 +3,7 @@ package org.confluence.mod.event;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.stats.Stats;
+import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.damagesource.DamageTypes;
@@ -35,7 +36,6 @@ import org.confluence.mod.misc.ModAttributes;
 import org.confluence.mod.misc.ModConfigs;
 import org.confluence.mod.network.NetworkHandler;
 import org.confluence.mod.network.s2c.EntityKilledPacketS2C;
-import org.confluence.mod.util.ModUtils;
 
 @Mod.EventBusSubscriber(modid = Confluence.MODID, bus = Mod.EventBusSubscriber.Bus.FORGE)
 public final class ForgeEvents {
@@ -55,7 +55,7 @@ public final class ForgeEvents {
         if (damageSource.is(DamageTypes.FELL_OUT_OF_WORLD) || damageSource.is(DamageTypes.GENERIC_KILL)) return;
         RandomSource random = living.level().random;
         float amount = event.getAmount();
-        if (amount < 0) return; // 防止莫名的负数伤害
+        if (amount <= 0) return; // 防止莫名的负数伤害
 
         IHoneycomb.apply(living, random);
         IStarCloak.apply(living, random);
@@ -71,7 +71,7 @@ public final class ForgeEvents {
         amount = BrainOfConfusion.apply(living, random, amount);
 
         if (ModConfigs.RANDOM_ATTACK_DAMAGE.get()) {
-            amount *= ModUtils.nextFloat(random,
+            amount *= Mth.nextFloat(random,
                     ModConfigs.RANDOM_ATTACK_DAMAGE_MIN.get().floatValue(),
                     ModConfigs.RANDOM_ATTACK_DAMAGE_MAX.get().floatValue()
             );

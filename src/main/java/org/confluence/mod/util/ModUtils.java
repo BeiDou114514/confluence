@@ -1,10 +1,7 @@
 package org.confluence.mod.util;
 
 import com.google.common.util.concurrent.AtomicDouble;
-import net.minecraft.ChatFormatting;
-import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.util.RandomSource;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.items.IItemHandlerModifiable;
@@ -22,27 +19,7 @@ import top.theillusivec4.curios.api.CuriosApi;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicInteger;
 
-import static net.minecraft.world.item.ItemStack.ATTRIBUTE_MODIFIER_FORMAT;
-
 public final class ModUtils {
-    public static float nextFloat(RandomSource randomSource, float origin, float bound) {
-        if (origin >= bound) {
-            throw new IllegalArgumentException("bound - origin is non positive");
-        } else {
-            return origin + randomSource.nextFloat() * (bound - origin);
-        }
-    }
-
-    public static Component getModifierTooltip(double amount, String type) {
-        boolean b = amount > 0.0;
-        amount *= 100.0;
-        return Component.translatable(
-                "prefix.confluence.tooltip." + (b ? "plus" : "take"),
-                ATTRIBUTE_MODIFIER_FORMAT.format(b ? amount : -amount),
-                Component.translatable("prefix.confluence.tooltip." + type)
-        ).withStyle(b ? ChatFormatting.BLUE : ChatFormatting.RED);
-    }
-
     public static void resetClientPacket(ServerPlayer serverPlayer) {
         AtomicDouble fartSpeed = new AtomicDouble(-1.0);
         AtomicDouble sandstormSpeed = new AtomicDouble(-1.0);
